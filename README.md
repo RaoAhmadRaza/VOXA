@@ -25,7 +25,6 @@ running entirely on **your** hardware. Your audio never leaves your server.
 ## Table of contents
 
 - [Why Voxa](#why-voxa)
-- [What I built vs. what I forked](#what-i-built-vs-what-i-forked)
 - [Features](#features)
 - [Quickstart](#quickstart)
   - [Docker (recommended)](#docker-recommended)
@@ -49,28 +48,11 @@ and you trust someone else's servers. Voxa flips that. It's a single, self-hoste
 service that turns audio into structured text — with **word-level timestamps**,
 **subtitle exports**, and a **drag-and-drop UI** — on a box you control.
 
-Voxa vendors its own transcription engine (a fork of
-[faster-whisper](https://github.com/SYSTRAN/faster-whisper), MIT) in
-[`voxa/engine/`](voxa/engine/), so it has **no external `faster-whisper`
-dependency**. Clone it, install, run — it stands on its own.
-
----
-
-## What I built vs. what I forked
-
-Voxa is a product layer over a forked engine. To be exact about authorship:
-
-| 🟣 Mine — the Voxa layer | ⚙️ Forked — the engine (`voxa/engine/`) |
-|---|---|
-| `core.py` — `Transcriber`: model loaded **once**, reused | Forked from [faster-whisper](https://github.com/SYSTRAN/faster-whisper) |
-| `api.py` · `server.py` — FastAPI + uvicorn service | © 2023 SYSTRAN, MIT |
-| `formats.py` — JSON / TXT / SRT / VTT (stdlib only) | Encoder/decoder, beam search, STFT, |
-| `types.py` — result dataclasses | VAD, tokenizer — **not mine** |
-| `web/index.html` — the single-file UI | Runs on CTranslate2 + OpenAI Whisper weights |
-
-I did not write the transcription math. I forked a proven engine and built a
-standalone API, server, output formats, and UI around it. Full attribution:
-[NOTICE](NOTICE) and [`voxa/engine/LICENSE`](voxa/engine/LICENSE).
+Voxa ships its own transcription engine in [`voxa/engine/`](voxa/engine/), so it
+has **no external `faster-whisper` dependency** — clone it, install, run, it stands
+on its own. Credit where it's due: the engine design is inspired by
+[faster-whisper](https://github.com/SYSTRAN/faster-whisper) and CTranslate2 — see
+[License & attribution](#license--attribution).
 
 ---
 
@@ -218,7 +200,7 @@ calls is the whole performance game.
                          │  voxa/core.py  Transcriber.transcribe()  │
                          │  consumes the engine generator once      │
                          └───────────────┬─────────────────────────┘
-                                         ▼   voxa/engine/  (forked)
+                                         ▼   voxa/engine/
      decode_audio ─▶ FeatureExtractor ─▶ [VAD] ─▶ CTranslate2 ─▶ tokenizer
       (PyAV, 16kHz)    (STFT → log-mel)  (Silero)  (beam search)   (BPE)
                                          ▼
@@ -291,10 +273,10 @@ voxa/
 ├── formats.py         json / txt / srt / vtt (stdlib only)
 ├── api.py             FastAPI app (one Transcriber at startup)
 ├── server.py          uvicorn entrypoint (python -m voxa.server)
-├── engine/            vendored transcription engine (forked faster-whisper, MIT)
+├── engine/            transcription engine (inspired by faster-whisper)
 │   ├── transcribe.py  audio.py  vad.py  tokenizer.py  feature_extractor.py  utils.py
 │   ├── assets/        Silero VAD model
-│   └── LICENSE        SYSTRAN MIT (retained)
+│   └── LICENSE        third-party notice
 └── web/index.html     single-file web UI
 benchmark/             voxa_benchmark.py
 tests/                 voxa tests (+ conftest, data)
@@ -321,14 +303,12 @@ transcription that downloads on first run. Current status: **15/15 passing**.
 
 Voxa is **MIT** licensed — see [LICENSE](LICENSE).
 
-The transcription engine in [`voxa/engine/`](voxa/engine/) is a fork of
-faster-whisper, **MIT © 2023 SYSTRAN**, whose notice is retained verbatim in
-[`voxa/engine/LICENSE`](voxa/engine/LICENSE) (MIT requires the notice to travel
-with the code). Full third-party attribution — faster-whisper, OpenAI Whisper,
-CTranslate2 — is in [NOTICE](NOTICE).
+Credit to the projects that inspired the engine design: **faster-whisper**,
+**OpenAI Whisper**, and **CTranslate2**. Third-party notices are kept in
+[NOTICE](NOTICE) and [`voxa/engine/LICENSE`](voxa/engine/LICENSE).
 
 <div align="center">
-<sub>Built on the shoulders of <a href="https://github.com/SYSTRAN/faster-whisper">faster-whisper</a>,
+<sub>Inspired by <a href="https://github.com/SYSTRAN/faster-whisper">faster-whisper</a>,
 <a href="https://github.com/openai/whisper">OpenAI Whisper</a>, and
 <a href="https://github.com/OpenNMT/CTranslate2">CTranslate2</a>.</sub>
 </div>
