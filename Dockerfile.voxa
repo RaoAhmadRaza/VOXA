@@ -1,0 +1,27 @@
+# Voxa — single self-host container (CPU + int8 friendly).
+# GPU users: swap the base for an NVIDIA CUDA 12 + cuDNN 9 image and set
+# VOXA_DEVICE=cuda, VOXA_COMPUTE_TYPE=float16.
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Deps first for layer caching. The av / ctranslate2 / onnxruntime wheels bundle
+# their own native libs, so no apt ffmpeg/BLAS install is needed for the CPU path.
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY voxa/ ./voxa/
+
+# Bind to all interfaces inside the container; pick the default model here.
+ENV VOXA_HOST=0.0.0.0 \
+    VOXA_PORT=8000 \
+    VOXA_MODEL=base \
+    VOXA_DEVICE=cpu \
+    VOXA_COMPUTE_TYPE=int8
+
+EXPOSE 8000
+
+# The model downloads from the Hugging Face Hub on first startup (needs network
+# once, then it is cached in the layer's HF cache). Mount a volume at
+# /root/.cache/huggingface to persist it across container restarts.
+CMD ["python", "-m", "voxa.server"]

@@ -1,0 +1,26 @@
+Voxa
+====
+
+Voxa is a standalone self-hosted speech-to-text product. It vendors its own
+transcription engine in `voxa/engine/`, forked from faster-whisper. Voxa does
+not depend on any external faster-whisper package.
+
+Copyright (c) 2026 the Voxa authors.
+This line covers the Voxa app layer (everything under `voxa/` except
+`voxa/engine/`). The vendored engine keeps its original copyright — see below.
+
+
+Vendored engine and attribution
+--------------------------------
+
+* voxa/engine/ — the transcription engine, forked from faster-whisper.
+  Copyright (c) 2023 SYSTRAN
+  MIT License. https://github.com/SYSTRAN/faster-whisper
+  The original MIT notice ships verbatim in voxa/engine/LICENSE, as the MIT
+  License requires the copyright notice to be included in all copies.
+
+* OpenAI Whisper — the underlying speech recognition model.
+  https://github.com/openai/whisper
+
+* CTranslate2 — the inference engine that runs the Whisper model.
+  https://github.com/OpenNMT/CTranslate2

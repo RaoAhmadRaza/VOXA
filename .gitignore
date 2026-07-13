@@ -1,0 +1,28 @@
+# Byte-compiled / Optimized / DLL Files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Distribution / Packaging
+venv/
+
+# Unit Test
+.pytest_cache/
+
+# Ignore IDE, Editor Files
+.idea/
+.vscode/
+
+# Claude Code project metadata (not part of the shipped product)
+.claude/
+CLAUDE.md
+PLAN.md
+
+# OS junk
+.DS_Store
+
+# Model cache (downloaded at runtime, not source)
+.cache/
+*.onnx.download
+

@@ -1,0 +1,6 @@
+include LICENSE
+include NOTICE
+include requirements.txt
+include voxa/engine/LICENSE
+recursive-include voxa/engine/assets *
+recursive-include voxa/web *

@@ -1,0 +1,16 @@
+# Voxa — standalone self-hosted speech-to-text.
+# Vendors its engine in voxa/engine/ (forked from faster-whisper), so it depends
+# directly on the engine's runtime libraries, not on any faster-whisper package.
+
+# Engine (voxa/engine/)
+ctranslate2>=4.0,<5
+huggingface_hub>=0.23
+tokenizers>=0.13,<1
+onnxruntime>=1.14,<2
+av>=11
+tqdm
+
+# App layer (API + server)
+fastapi
+uvicorn
+python-multipart
