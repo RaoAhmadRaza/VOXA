@@ -58,9 +58,9 @@
     padding: 72px 48px; display: flex; flex-direction: column; justify-content: center; min-height: 640px;
   }
   .intro-watermark {
-    position: absolute; top: -0.14em; left: -0.06em; z-index: 0; pointer-events: none; user-select: none;
-    font-family: var(--serif); font-weight: 500; font-size: clamp(140px, 20vw, 300px); line-height: 1;
-    color: transparent; -webkit-text-stroke: 1px var(--border-hover); white-space: nowrap;
+    position: absolute; top: -0.14em; left: 0; right: 0; z-index: 0; pointer-events: none; user-select: none;
+    font-family: var(--serif); font-weight: 500; font-size: clamp(80px, 11vw, 190px); line-height: 1;
+    color: transparent; -webkit-text-stroke: 1px var(--border-hover); white-space: nowrap; overflow: hidden;
   }
   .intro > * { position: relative; z-index: 1; }
   .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
