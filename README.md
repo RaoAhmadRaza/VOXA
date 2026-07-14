@@ -46,7 +46,8 @@ running entirely on **your** hardware. Your audio never leaves your server.
 Most speech-to-text is a cloud API: you upload private audio, you pay per minute,
 and you trust someone else's servers. Voxa flips that. It's a single, self-hosted
 service that turns audio into structured text — with **word-level timestamps**,
-**subtitle exports**, and a **drag-and-drop UI** — on a box you control.
+**subtitle exports**, a **drag-and-drop UI**, and **live microphone recording with
+playback** — on a box you control.
 
 Voxa ships its own transcription engine in [`voxa/engine/`](voxa/engine/), so it
 has **no external `faster-whisper` dependency** — clone it, install, run, it stands
@@ -60,6 +61,8 @@ on its own. Credit where it's due: the engine design is inspired by
 
 - 🌐 **HTTP API** — `POST /transcribe` (multipart upload), `GET /health`.
 - 🎨 **Web UI** — drag-and-drop, served by the same server, zero build step.
+- 🎙️ **Live microphone recording** — record straight from the browser, no upload needed.
+- ▶️ **Playback** — listen to any uploaded or recorded audio before and after transcribing.
 - 📝 **4 output formats** — JSON (segments + timestamps), plain text, SRT, WebVTT.
 - ⏱️ **Word-level timestamps** — per-word start/end when you want them.
 - 🔇 **VAD silence filtering** — skip dead air via Silero VAD.
