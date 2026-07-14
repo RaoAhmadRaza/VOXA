@@ -3,7 +3,7 @@
 The one rule that matters here: load the model ONCE, reuse it. Rebuilding
 WhisperModel per request is the number-one performance mistake.
 
-The engine lives in voxa.engine (a fork of faster-whisper, MIT — see
+The engine lives in voxa.engine (based on faster-whisper, MIT — see
 voxa/engine/LICENSE). Voxa is self-contained: it depends on no external
 faster-whisper package.
 """

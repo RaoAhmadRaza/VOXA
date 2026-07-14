@@ -1,4 +1,4 @@
-The code in this directory (voxa/engine/) is a fork of faster-whisper
+The code in this directory (voxa/engine/) is based on faster-whisper
 (https://github.com/SYSTRAN/faster-whisper), used under the MIT License.
 The original copyright and permission notice is reproduced verbatim below,
 as the MIT License requires it to be included in all copies.

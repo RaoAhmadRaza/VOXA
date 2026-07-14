@@ -22,6 +22,6 @@ SOFTWARE.
 
 ---
 
-The transcription engine in voxa/engine/ is a fork of faster-whisper and is
+The transcription engine in voxa/engine/ is based on faster-whisper and is
 licensed separately under the MIT License, Copyright (c) 2023 SYSTRAN. See
 voxa/engine/LICENSE. That notice is retained as the MIT License requires.

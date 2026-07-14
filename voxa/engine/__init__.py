@@ -1,4 +1,4 @@
-# voxa.engine — forked from faster-whisper (© 2023 SYSTRAN, MIT). See LICENSE
+# voxa.engine — based on faster-whisper (© 2023 SYSTRAN, MIT). See LICENSE
 # in this directory. This is Voxa's own vendored transcription engine; Voxa does
 # not depend on any external faster-whisper package.
 from voxa.engine.audio import decode_audio

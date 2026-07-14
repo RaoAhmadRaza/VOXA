@@ -1,19 +1,19 @@
 Voxa
 ====
 
-Voxa is a standalone self-hosted speech-to-text product. It vendors its own
-transcription engine in `voxa/engine/`, forked from faster-whisper. Voxa does
-not depend on any external faster-whisper package.
+Voxa is a standalone self-hosted speech-to-text product. Its transcription
+engine (`voxa/engine/`) is based on faster-whisper. Voxa does not depend on any
+external faster-whisper package.
 
 Copyright (c) 2026 the Voxa authors.
 This line covers the Voxa app layer (everything under `voxa/` except
-`voxa/engine/`). The vendored engine keeps its original copyright — see below.
+`voxa/engine/`). The engine keeps its original copyright — see below.
 
 
-Vendored engine and attribution
---------------------------------
+Third-party code and attribution
+---------------------------------
 
-* voxa/engine/ — the transcription engine, forked from faster-whisper.
+* voxa/engine/ — the transcription engine, based on faster-whisper.
   Copyright (c) 2023 SYSTRAN
   MIT License. https://github.com/SYSTRAN/faster-whisper
   The original MIT notice ships verbatim in voxa/engine/LICENSE, as the MIT
